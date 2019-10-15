@@ -51,78 +51,83 @@ console.log(showData)
             matches.find(match => match.name === e.target.value),
           )
         )}
-        style={styles.input}
+        style={styles.dropdown}
       />
-      <CustomInput
-        type={'text'}
-        value={match.sport || 'sport'}
-        disabled={true}
-        style={styles.input}
-      />
-      <CustomInput
-        type={'text'}
-        value={match.country || 'country'}
-        disabled={true}
-        style={styles.input}
-      />
-      <CustomInput
-        type={'text'}
-        value={match.competition || 'competition'}
-        disabled={true}
-        style={styles.input}
-      />
-      <Dropdown
-        options={match.bets ? [match.bets[0]] : []}
-        value={MARKET}
-        title={MARKET}
-        id={MARKET}
-        name={MARKET}
-        defaultTitle={'Select a market'}
-        onChange={(e) => dispatch(
-          actionCreator(
-            SELECT_MARKET,
-            e.target.value,
-          )
-        )}
-        style={styles.input}
-      />
-      <Dropdown
-        options={[{pick: 1},{pick:2}]}
-        value={PICK}
-        title={PICK}
-        id={PICK}
-        name={PICK}
-        defaultTitle={'Pick'}
-        onChange={(e) => dispatch(
-          actionCreator(
-            SELECT_PICK,
-            e.target.value,
-          )
-        )}
-        style={styles.input}
-      />
-      <Dropdown
-        options={bet.odds || []}
-        value={VALUE}
-        title={VALUE}
-        id={VALUE}
-        name={VALUE}
-        defaultTitle={'Odds'}
-        customTitle={bet.bookieId}
-        onChange={(e) => dispatch(
-          actionCreator(
-            SELECT_ODD,
-            e.target.value,
-          )
-        )}
-        style={styles.input}
-      />
+      <div style={styles.inputContainer}>
+        <CustomInput
+          type={'text'}
+          value={match.sport || 'sport'}
+          disabled={true}
+          style={styles.input}
+        />
+        <CustomInput
+          type={'text'}
+          value={match.country || 'country'}
+          disabled={true}
+          style={styles.input}
+        />
+        <CustomInput
+          type={'text'}
+          value={match.competition || 'competition'}
+          disabled={true}
+          style={styles.input}
+        />
+      </div>
+      <div style={styles.dropdownContainer}>
+        <Dropdown
+          options={match.bets ? [match.bets[0]] : []}
+          value={MARKET}
+          title={MARKET}
+          id={MARKET}
+          name={MARKET}
+          defaultTitle={'Select a market'}
+          onChange={(e) => dispatch(
+            actionCreator(
+              SELECT_MARKET,
+              e.target.value,
+            )
+          )}
+          style={styles.dropdown}
+        />
+        <Dropdown
+          options={[{pick: 1},{pick:2}]}
+          value={PICK}
+          title={PICK}
+          id={PICK}
+          name={PICK}
+          defaultTitle={'Pick'}
+          onChange={(e) => dispatch(
+            actionCreator(
+              SELECT_PICK,
+              e.target.value,
+            )
+          )}
+          style={styles.dropdown}
+        />
+        <Dropdown
+          options={bet.odds || []}
+          value={VALUE}
+          title={VALUE}
+          id={VALUE}
+          name={VALUE}
+          defaultTitle={'Odds'}
+          customTitle={bet.bookieId}
+          onChange={(e) => dispatch(
+            actionCreator(
+              SELECT_ODD,
+              e.target.value,
+            )
+          )}
+          style={styles.dropdown}
+        />
+      </div>
       <CustomButton
-        title={'click'}
+        title={'Bet'}
         type={'submit'}
+        style={styles.button}
         onClick={() => printData(state)}
       />
-      <TextArea style={{width: 200, height: 100}} value={`{
+      <TextArea style={styles.textArea} value={`{
           match: ${showData.match},
           sport: ${showData.sport},
           competition: ${showData.competition},

@@ -10,7 +10,7 @@ const Dropdown = ({
     onChange,
     defaultTitle,
     customTitle,
-    ...props,
+    ...props
   }) => {
   return(
     <select 
