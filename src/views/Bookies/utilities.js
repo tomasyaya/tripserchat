@@ -7,7 +7,13 @@ export const initialState = {
   match: {},
   market: '',
   bet: {},
-  odd: {}
+  odd: {},
+  disabled: {
+    market: true,
+    pick: true,
+    odds: true,
+    button: true,
+  }
 }
 
 export const reducer = (state = initialState, action) => {
@@ -16,23 +22,39 @@ export const reducer = (state = initialState, action) => {
     case SELECT_MATCH:
       return {
         ...state,
-        match: payload
+        match: payload,
+        disabled: {
+          ...state.disabled,
+          market: false
+        }
       }
     case SELECT_MARKET: 
       return {
         ...state,
-        market: payload
+        market: payload,
+        disabled: {
+          ...state.disabled,
+          pick: false
+        }
       }
     case SELECT_PICK:
       const [bet, hill] = state.match.bets;
         return {
           ...state,
-          bet: (payload > 1) ? hill : bet
+          bet: (payload > 1) ? hill : bet,
+          disabled: {
+            ...state.disabled,
+            odds: false,
+          }
         }
     case SELECT_ODD:
       return {
         ...state,
-        odd: payload
+        odd: payload,
+        disabled: {
+          ...state.disabled,
+          button: false
+        }
       }
     default:
       return {

@@ -10,6 +10,7 @@ export const styles = {
     backgroundColor: 'lightgray',
     borderRadius: '20px',
     padding: '30px',
+    minHeight: '700px',
   },
   inputContainer: {
     display: 'flex',
@@ -71,5 +72,12 @@ export const styles = {
     border: 'none',
     fontSize: '15px',
     margin: '10px',
+  },
+  loaderContainer: {
+    height: '100px',
+    width: '100px'
+  },
+  loaderTitle: {
+    fontSize: '10px'
   }
 }

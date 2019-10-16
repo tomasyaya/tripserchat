@@ -3,12 +3,15 @@ import './App.css';
 import {Provider} from 'react-redux';
 import {store} from './redux/store';
 import Bookies from './views/Bookies/Bookies';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 function App() {
   
   return (
     <Provider store={store}>
-      <Bookies />        
+      <ErrorBoundary>
+        <Bookies />        
+      </ErrorBoundary>
     </Provider>
   );
 }
